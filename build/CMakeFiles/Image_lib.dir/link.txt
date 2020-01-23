@@ -1,0 +1,2 @@
+/usr/bin/ar qc libImage_lib.a  CMakeFiles/Image_lib.dir/Image.cxx.o
+/usr/bin/ranlib libImage_lib.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libHeader_lib.a  CMakeFiles/Header_lib.dir/Header.cxx.o
+/usr/bin/ranlib libHeader_lib.a
