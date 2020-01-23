@@ -144,32 +144,7 @@ void toImageMsg(sensor_msgs::msg::Image & ros_image, cv::Mat &image)
   ros_image.width(image.cols);
   ros_image.encoding("bgr8");
   ros_image.step(image.cols * image.elemSize());
-//   size_t size = ros_image.step() * image.rows;
-//   ros_image.data().resize(size);
-//   std::cout << "DATA SIZE " << ros_image.data().size() << std::endl; 
-//   memcpy(&ros_image.data()[0], image.data, size);
-    std::vector<uint8_t> data = {0};
-  for (size_t i = 0; i < 307200; i++)
-  {
-     data.push_back(0);
-  }
-  
-//   ros_image.data(data);
-//   ros_image.data(data);
-//   std::cout << ros_image.data().size()<<std::endl;
-//   ros_image.data(data);
-//   ros_image.data().resize(size);
-
-//   if (image.isContinuous()) {
-//     memcpy(reinterpret_cast<char *>(&ros_image.data()[0]), image.data, size);
-//   } else {
-//     // Copy by row by row
-//     uchar * ros_data_ptr = reinterpret_cast<uchar *>(&ros_image.data()[0]);
-//     uchar * cv_data_ptr = image.data;
-//     for (int i = 0; i < image.rows; ++i) {
-//       memcpy(ros_data_ptr, cv_data_ptr, ros_image.step());
-//       ros_data_ptr += ros_image.step();
-//       cv_data_ptr += image.step;
-//     }
-//   }
+  size_t size = ros_image.step() * image.rows;
+  ros_image.data().resize(size);
+  memcpy(&ros_image.data()[0], image.data, size);
 }
