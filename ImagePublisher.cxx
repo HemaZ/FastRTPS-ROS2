@@ -49,6 +49,8 @@ bool ImagePublisher::init()
     // Create RTPSParticipant
 
     ParticipantAttributes PParam;
+    PParam.rtps.sendSocketBufferSize = 212992;
+    PParam.rtps.listenSocketBufferSize = 212992;
     PParam.rtps.setName("Participant_publisher");  //You can put here the name you want
     mp_participant = Domain::createParticipant(PParam);
     if(mp_participant == nullptr)
@@ -63,6 +65,7 @@ bool ImagePublisher::init()
     // Create Publisher
 
     PublisherAttributes Wparam;
+    Wparam.qos.m_publishMode.kind = ASYNCHRONOUS_PUBLISH_MODE; // To handle big data
     Wparam.topic.topicKind = NO_KEY;
     Wparam.topic.topicDataType = myType.getName();  //This type MUST be registered
     Wparam.topic.topicName = "rt/ImagePubSubTopic";
