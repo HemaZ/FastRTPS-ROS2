@@ -66,6 +66,7 @@ bool ImagePublisher::init()
 
     PublisherAttributes Wparam;
     Wparam.qos.m_publishMode.kind = ASYNCHRONOUS_PUBLISH_MODE; // To handle big data
+    Wparam.historyMemoryPolicy = rtps::PREALLOCATED_WITH_REALLOC_MEMORY_MODE; // for varying data size 
     Wparam.topic.topicKind = NO_KEY;
     Wparam.topic.topicDataType = myType.getName();  //This type MUST be registered
     Wparam.topic.topicName = "rt/ImagePubSubTopic";
